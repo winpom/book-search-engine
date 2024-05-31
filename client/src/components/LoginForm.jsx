@@ -12,10 +12,12 @@ const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [loginUser, { error, data }] = useMutation(LOGIN_USER);
+
 
   const handleInputChange = (event) => {
-    const { username, value } = event.target;
-    setUserFormData({ ...userFormData, [username]: value });
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
   };
 
   const handleFormSubmit = async (event) => {
