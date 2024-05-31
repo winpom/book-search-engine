@@ -31,13 +31,13 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-    addSkill: async (parent, { profileId, skill }, context) => {
+    saveBook: async (parent, { profileId, book }, context) => {
       // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
       if (context.user) {
         return Profile.findOneAndUpdate(
           { _id: profileId },
           {
-            $addToSet: { skills: skill },
+            $addToSet: { books: book },
           },
           {
             new: true,
@@ -48,11 +48,11 @@ const resolvers = {
       // If user attempts to execute this mutation and isn't logged in, throw an error
       throw AuthenticationError;
     },
-    removeSkill: async (parent, { skill }, context) => {
+    removeBook: async (parent, { book }, context) => {
       if (context.user) {
         return Profile.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { skills: skill } },
+          { $pull: { books: book } },
           { new: true }
         );
       }

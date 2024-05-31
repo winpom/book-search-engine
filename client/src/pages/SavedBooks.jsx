@@ -7,13 +7,13 @@ import {
   Col
 } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
-import { GET_ME } from '../utils/queries';
-import { REMOVE_BOOK } from '../utils/mutations';
+import { GET_ME } from '../../utils/queries';
+import { REMOVE_BOOK } from '../../utils/mutations';
 
 // import { getMe, deleteBook } from '../utils/API';
-import { removeBookId } from '../utils/localStorage';
+import { removeBookId } from '../../utils/localStorage';
 
 const SavedBooks = () => {
   const { loading, data } = useQuery(GET_ME);

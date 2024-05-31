@@ -1,7 +1,8 @@
+
 const typeDefs = `
 type Auth {
   token: ID!
-  profile: User
+  username: User
 }
 
 type User {
@@ -22,7 +23,7 @@ type Book {
 }
 
 type Query {
-  me: Profile
+  me: User
 }
 
 type Mutation {
